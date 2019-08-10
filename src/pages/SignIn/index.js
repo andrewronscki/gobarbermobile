@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+
 import logo from '~/assets/logo.png';
 
 import Background from '~/components/Background';
@@ -16,8 +17,8 @@ import {
 } from './styles';
 
 export default function SignIn({ navigation }) {
-  const passwordRef = useRef();
   const dispatch = useDispatch();
+  const passwordRef = useRef();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -39,7 +40,7 @@ export default function SignIn({ navigation }) {
             keyboardType="email-address"
             autoCorrect={false}
             autoCapitalize="none"
-            placeholder="Digite seu email"
+            placeholder="Digite seu e-mail"
             returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
             value={email}
@@ -57,12 +58,13 @@ export default function SignIn({ navigation }) {
             onChangeText={setPassword}
           />
 
-          <SubmitButton loading={loading} onPress={handleSubmit}>
+          <SubmitButton onPress={handleSubmit} loading={loading}>
             Acessar
           </SubmitButton>
         </Form>
+
         <SignLink onPress={() => navigation.navigate('SignUp')}>
-          <SignLinkText>Criar conta gratuira</SignLinkText>
+          <SignLinkText>Criar conta gratuita</SignLinkText>
         </SignLink>
       </Container>
     </Background>

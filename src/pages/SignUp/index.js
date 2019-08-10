@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+
 import logo from '~/assets/logo.png';
 
 import Background from '~/components/Background';
@@ -40,19 +41,20 @@ export default function SignUp({ navigation }) {
           <FormInput
             icon="person-outline"
             autoCorrect={false}
-            autoCapitalize="none"
+            autoCapitalize="words"
             placeholder="Nome completo"
             returnKeyType="next"
             onSubmitEditing={() => emailRef.current.focus()}
             value={name}
             onChangeText={setName}
           />
+
           <FormInput
             icon="mail-outline"
             keyboardType="email-address"
             autoCorrect={false}
             autoCapitalize="none"
-            placeholder="Digite seu email"
+            placeholder="Digite seu e-mail"
             ref={emailRef}
             returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
@@ -71,10 +73,11 @@ export default function SignUp({ navigation }) {
             onChangeText={setPassword}
           />
 
-          <SubmitButton loading={loading} onPress={handleSubmit}>
+          <SubmitButton onPress={handleSubmit} loading={loading}>
             Criar conta
           </SubmitButton>
         </Form>
+
         <SignLink onPress={() => navigation.navigate('SignIn')}>
           <SignLinkText>Já tenho conta</SignLinkText>
         </SignLink>
